@@ -1,5 +1,9 @@
 {
   "name": "E-Marketplace",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.16.1"
+  }
 }
