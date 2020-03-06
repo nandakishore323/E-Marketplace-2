@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Title</th>
+      <th>Subject</th>
       <th>Description</th>
       <th colspan="3"></th>
     </tr>
@@ -15,6 +16,7 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.title %></td>
+        <td><%= product.subject %></td>
         <td><%= product.description %></td>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
