@@ -16,5 +16,21 @@
   <%= @product.description %>
 </p>
 
+<h2>Leave a comment</h2>
+<% @comments.each do |comment| %>
+<p><%= comment.body %></p>
+<% end %>
+
+<%= form_for @comment, url: { controller: "products", action: "add_comment"} do |f| %>
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

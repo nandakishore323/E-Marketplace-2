@@ -10,6 +10,11 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @comments = @product.comments
+    @comment = Comment.new(params[:body])
+  end
+
+  def add_comment
   end
 
   # GET /products/new

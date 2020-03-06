@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>User</th>
       <th>Title</th>
       <th>Subject</th>
       <th>Description</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
+        <td><%= product.user.email %></td>
         <td><%= product.title %></td>
         <td><%= product.subject %></td>
         <td><%= product.description %></td>
