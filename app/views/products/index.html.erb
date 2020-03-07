@@ -1,33 +1,27 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Products</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Title</th>
-      <th>Subject</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.user.email %></td>
-        <td><%= product.title %></td>
-        <td><%= product.subject %></td>
-        <td><%= product.description %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="jumbotron my-5">
+    <div class="container">
+    <% if user_signed_in? %>
+      <h1>Welcome, Guest </h1>
+      <p>As a teacher, in the Queensland Curriculum, I want to be able to access differentiated content for a variety of subjects in the secondary education system, so that the teacher workload is alleviated and higher order content is delivered across the state.</p>
+      <p><%= link_to 'Create New Product Ad', new_product_path, class: "btn btn-primary btn-lg", role: "button" %></p>
+    <% else %>
+      <h1>Hola NITK</h1>
+      <p>Your All in one place to Buy used Used Books,Cycles or literally anything that you want. Sign Up Quickly!!!</p>
+      <p><%= link_to 'Register Today', new_user_registration_path, class: "btn btn-primary btn-lg", role: "button" %></p>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Product', new_product_path %>
+    </div>
+</div>
+<div class="row">
+  <% @products.each do |product| %>
+  <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+        <img class="card-img-top" src="http://via.placeholder.com/300" alt="Card image">
+        <div class="card-body">
+          <h5 class="card-title"><%= product.title %></h5>
+          <p class="card-text"><%= product.description %></p>
+          <%= link_to 'View Product', product, class: "btn btn-primary" %>
+        </div>
+      </div>
+  </div>
+  <% end %>
+</div>

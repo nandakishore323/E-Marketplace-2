@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+<<<<<<< HEAD
 Product.destroy_all
 
 10.times do |num|
@@ -15,3 +16,6 @@ Product.destroy_all
     description: "Barhiya product hai bhai"
   )
 end
+=======
+
+>>>>>>> 5d3601944a7f3867ff06dd5cb27d2841d4456232
