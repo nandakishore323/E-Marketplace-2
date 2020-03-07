@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post 'comments/create'
+  post 'comments/destroy'
   get "about", to: "pages#about"
   get "contact_us", to: "pages#contact_us"
   resources :products
