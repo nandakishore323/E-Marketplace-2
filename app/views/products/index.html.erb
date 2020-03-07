@@ -15,7 +15,11 @@
   <% @products.each do |product| %>
   <div class="col-md-4">
       <div class="card mb-4 shadow-sm">
-        <img class="card-img-top" src="http://via.placeholder.com/300" alt="Card image">
+        <% if product.image.attached? %>
+         <%= cl_image_tag(product.image.key, width: 100 , cropt: "fit") %>
+        <% else %>
+          <img class="card-img-top" src="http://via.placeholder.com/300" alt="Card image">
+        <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= product.title %></h5>
           <p class="card-text"><%= product.description %></p>
