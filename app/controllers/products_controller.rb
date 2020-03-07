@@ -4,14 +4,14 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.all.order(created_at: :desc)
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
     @comments = @product.comments
-    @comment = Comment.new(params[:body])
+    @comment = Comment.new
   end
 
   def add_comment

@@ -20,6 +20,14 @@
           <h5 class="card-title"><%= product.title %></h5>
           <p class="card-text"><%= product.description %></p>
           <%= link_to 'View Product', product, class: "btn btn-primary" %>
+          <br />
+          <p style="float:right;">
+            <% if product.updated_at > product.created_at %>
+              <%= "edited about " + time_ago_in_words(product.updated_at) + " ago" %>
+            <% else %>
+              <%= "created " + time_ago_in_words(product.created_at) + " ago" %>
+            <% end %>
+          </p>
         </div>
       </div>
   </div>
