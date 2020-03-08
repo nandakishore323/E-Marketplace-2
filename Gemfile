@@ -66,6 +66,8 @@ gem 'jquery-rails'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4'
 
 gem 'omniauth-facebook'
+gem 'omniauth'
+gem 'activerecord-session_store'
 
 gem "cloudinary", "~> 1.9"
 
