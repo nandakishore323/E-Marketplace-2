@@ -1,7 +1,11 @@
 <div class="row">
   <div class="col-md-8">
     <div class="product-image">
-      <img src="https://via.placeholder.com/750x500" alt="Product image" class="img-fluid img-thumbnail" >
+      <%= image_tag @product.image %>
+        <% if @product.image.attached? %>
+          <%= cl_image_tag(@product.image.key) %>
+        <% end %>
+      <% end %>
     </div>
 
     <h2 class="mt-2 mb-3">
@@ -20,7 +24,7 @@
 
     <div class="actions mb-5">
       <%= link_to 'Edit Product', edit_product_path(@product), class: 'btn btn-primary mr-2' %>
-      <%= link_to 'Delete Listing', @listing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+      <%= link_to 'Delete Product', @product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
       <%= link_to 'Back', products_path, class: 'btn btn-default' %>
     </div>
 
