@@ -23,7 +23,7 @@
 
   <div class="form-group">
     <%= form.label :subject %>
-    <%= form.text_field :subject, class: 'form-control' %>
+    <%= form.select :subject, options_for_select(subjects_helper), {}, class: 'form-control' %>
   </div>
 
   <div class="col">

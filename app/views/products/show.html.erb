@@ -1,4 +1,4 @@
-<div class="row">
+product<div class="row">
   <div class="col-md-8">
     <div class="product-image">
       <% if @product.image.attached? %>
@@ -75,6 +75,12 @@
                 <li><%= fa_icon "check-circle", text: "30 Day Guarentee" %></li>
               </ul>
               <%= link_to 'Buy Now!', charges_path, method: 'post', class: 'btn d-block btn-success py-3' %>
+              <div class="text-center mt-3">
+                <% if @product.updated_at > @product.created_at %>
+                  <%= "Updated " + time_ago_in_words(@product.updated_at) + " ago" %>
+                <% else %>
+                  <%= "Created " + time_ago_in_words(@product.created_at) + " ago" %>
+                <% end %>
             </div>
         </div>
     </div>

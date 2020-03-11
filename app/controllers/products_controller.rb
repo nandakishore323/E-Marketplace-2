@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :add_comment]
 
   # GET /products
   # GET /products.json
@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
   end
 
   def add_comment
+    @comment = Product.comments.new(comment_params)
   end
 
   # GET /products/new
@@ -76,5 +77,9 @@ class ProductsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def product_params
       params.require(:product).permit(:title, :description, :subject, :image, :price)
+    end
+
+    def comment_params
+      params.require(:product).permit(:body)
     end
 end
