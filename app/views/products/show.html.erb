@@ -2,7 +2,7 @@
   <div class="col-md-8">
     <div class="product-image">
       <% if @product.image.attached? %>
-        <%= cl_image_tag(product.image.key, width: 100 , cropt: "fit") %>
+        <%= cl_image_tag(@product.image.key, options = {class: 'img-fluid img-thumbnail'}) %>
         <!-- <img src="https://via.placeholder.com/750x500" alt="Product image" class="img-fluid img-thumbnail" > -->
       <% end %>
     </div>
