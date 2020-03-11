@@ -26,6 +26,16 @@
     <%= form.text_field :subject, class: 'form-control' %>
   </div>
 
+  <div class="col">
+    <%= form.label :price %>
+    <div class="input-group">
+      <div class="input-group-prepend">
+          <div class="input-group-text">$AUD</div>
+      </div>
+      <%= form.text_field :price, class: 'form-control' %>
+    </div>
+  </div>
+
   <div class="form-group">
     <%= form.label :description %>
     <%= form.text_area :description, class: 'form-control' %>

@@ -5,6 +5,7 @@ Product.destroy_all
     title: "Title #{num}",
     user: User.first,
     subject: "Electronics",
-    description: "Barhiya product hai bhai"
+    description: "Barhiya product hai bhai",
+    price: 5
   )
 end

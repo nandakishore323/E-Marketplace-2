@@ -1,7 +1,7 @@
 <div class="jumbotron my-5">
     <div class="container">
     <% if user_signed_in? %>
-      <h1>Welcome, Guest </h1>
+      <h1 class="font-weight-bold">Welcome, <%= current_user.name ? current_user.name : "Friend" %> </h1>
       <p>Your All in one place to Buy used Used Books,Cycles or literally anything that you want. Get Started Now !!!</p>
       <p><%= link_to 'Create New Product Ad', new_product_path, class: "btn btn-primary btn-lg", role: "button" %></p>
     <% else %>
