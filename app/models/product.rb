@@ -1,7 +1,4 @@
 class Product < ApplicationRecord
-  validates :title, presence: true
-  validates :description, presence: true
-  validates :subject, presence: true
   validates :title, :description, :subject, :price, presence: true
 
   has_many :comments
