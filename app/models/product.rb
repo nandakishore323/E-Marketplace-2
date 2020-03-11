@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   validates :title, :description, :subject, :price, presence: true
+  validates :price, numericality: { only_integer: true }
 
   has_many :comments
   belongs_to :user
