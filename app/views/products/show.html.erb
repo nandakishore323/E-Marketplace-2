@@ -74,7 +74,7 @@
                 <li><%= fa_icon "check-circle", text: "Future Updates" %></li>
                 <li><%= fa_icon "check-circle", text: "30 Day Guarentee" %></li>
               </ul>
-              <button type="button" class="btn btn-lg btn-block btn-success">Add To Cart</button>
+              <%= link_to 'Buy Now!', charges_path, method: 'post', class: 'btn d-block btn-success py-3' %>
             </div>
         </div>
     </div>
