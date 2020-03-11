@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
   def show
     @comments = @product.comments
     @comment = Comment.new
+    @user_products = @product.user.products.order('created_at DESC').limit(2)
   end
 
   def add_comment

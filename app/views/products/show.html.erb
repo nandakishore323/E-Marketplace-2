@@ -32,7 +32,30 @@ product<div class="row">
       <%= link_to 'Back', products_path, class: 'btn btn-default' %>
     </div>
 
-    <h2>Comments</h2>
+    <hr />
+
+    <h3>More products by <%= @product.user.name %></h3>
+
+    <div class="row mt-4 mb-5">
+      <% if @user_products %>
+        <% @user_products.each do |user_product| %>
+          <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+            <% if user_product.image.attached? %>
+                <%= cl_image_tag(user_product.image.key, options = {class: 'img-fluid'}) %>
+            <% end %>
+              <div class="card-body">
+                <h5 class="card-title"><%= user_product.title %></h5>
+                <p class="card-text"><%= user_product.description %></p>
+                  <%= link_to 'View Product', user_product, class: "btn btn-success text-center" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <hr />
 
     <div class="comments mb-5">
 
