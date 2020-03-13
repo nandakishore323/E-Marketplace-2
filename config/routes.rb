@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   post 'comments/create'
   post 'comments/destroy'
-  resources :products
+  resources :products do
+    resources :comments
+  end
   devise_for :users, controllers: {omniauth_callbacks: 'omniauth'}
   resources :charges
   root to: 'products#index'

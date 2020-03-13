@@ -59,28 +59,14 @@ product<div class="row">
 
     <div class="comments mb-5">
 
-      <% if @comments.nil? %>
-      <h4>Ask a question?</h4>
-      <p>Be the first to ask a question about this product.</p>
+      <h4 class="my-3 p-4 text-white bg-dark">Product Questions & Answers</h4>
 
-      <% else %>
+      <p><%= @product.comments.count %> Questions Asked... </p>
+      <%= render @product.comments %>
 
-      <% @comments.each do |comment| %>
-      <p><%= comment.body %></p>
-      <% end %>
-
-      <% end %>
-
-      <% if user_signed_in? %>
-        <%= form_for @comment,  url: { controller: "products", action: "add_comment" } do |f| %>
-          <div class="form-group">
-            <%= f.text_area :body, class: "form-control" %>
-          </div>
-          <div class="actions">
-            <%= f.submit 'Create Comment', class: "btn btn-primary" %>
-          </div>
-        <% end %>
-      <% end %>
+      <hr />
+      <p>Ask a Question: </p>
+      <%= render 'comments/form' %>
     </div>
 
     <div class="col-md-4">

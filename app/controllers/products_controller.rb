@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy, :add_comment]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
   # GET /products.json
@@ -10,13 +10,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @comments = @product.comments
-    @comment = Comment.new
     @user_products = @product.user.products.order('created_at DESC').limit(2)
-  end
-
-  def add_comment
-    @comment = Product.comments.new(comment_params)
   end
 
   # GET /products/new
@@ -79,8 +73,5 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:title, :description, :subject, :image, :price)
     end
-
-    def comment_params
-      params.require(:product).permit(:body)
-    end
+    
 end

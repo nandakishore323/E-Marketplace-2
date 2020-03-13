@@ -1,8 +1,15 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+  before_action :find_product
+
+  def index:
+    @comments = @product.comments.order(created_at: :desc)
+  end
 
   def create
-    @product = Product.find(params[:id])
-    @comment = @product.comments.create(params[:comment].permit(:body))
+    @comment = @product.comments.new(comment_params)
+    @comment.user = current_user
+    @comment.save
     redirect_to products_path(@product)
   end
 
@@ -12,4 +19,14 @@ class CommentsController < ApplicationController
     @comment.destroy
     redirect_to products_path(@product)
   end
+
+  private
+    def find_product
+      @product = Product.find(params[:product_id])
+    end
+
+    def comment_params
+      params.require(:comment).permit(:body)
+    end
+
 end

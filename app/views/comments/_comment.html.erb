@@ -1,0 +1,5 @@
+<div class="bg-light p-3">
+  <h6 class="text-success"><%= comment.user.name %> asked:</h6>
+  <p class="blockquote"><%= comment.body %></p>
+  <p class="mb-0"><%= time_ago_in_words(comment.created_at) %> ago</p>
+</div>

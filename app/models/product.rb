@@ -2,7 +2,7 @@ class Product < ApplicationRecord
   validates :title, :description, :subject, :price, presence: true
   validates :price, numericality: { only_integer: true }
 
-  has_many :comments
+  has_many :comments, dependent: :destroy
   belongs_to :user
   has_one_attached :image
 
