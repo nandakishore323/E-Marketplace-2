@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :find_product
 
-  def index:
+  def index
     @comments = @product.comments.order(created_at: :desc)
   end
 
@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     @comment = @product.comments.new(comment_params)
     @comment.user = current_user
     @comment.save
-    redirect_to products_path(@product)
+    redirect_to product_url(@product)
   end
 
   def destroy
