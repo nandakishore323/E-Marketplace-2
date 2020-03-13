@@ -15,5 +15,9 @@
           // have more than 1 button of that class
           document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
           </script>
-          <button type="submit" class="btn w-100 my-3 py-3 d-block btn-success">Buy Now!</button>
+          <% if user_signed_in? %>
+            <button type="submit" class="btn btn-lg w-100 my-3 py-3 d-block btn-success">BUY NOW</button>
+          <% else %>
+            <%= link_to 'REGISTER NOW!', new_user_session_path, class: "btn btn-lg w-100 my-3 py-3 d-block btn-success" %>
+          <% end %>
   <% end %>

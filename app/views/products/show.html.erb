@@ -39,7 +39,7 @@
     <hr />
 
     <%= render 'products/comments' %>
-    
+
     <div class="col-md-4">
         <div class="card mb-4 shadow-sm sticky">
             <div class="card-header">
@@ -54,7 +54,7 @@
                 <li><%= fa_icon "check-circle", text: "Future Updates" %></li>
                 <li><%= fa_icon "check-circle", text: "30 Day Guarentee" %></li>
               </ul>
-              <%= render 'charges/new' %>
+              <%= render 'charges/form' %>
               <div class="text-center mt-3">
                 <% if @product.updated_at > @product.created_at %>
                   <%= "Updated " + time_ago_in_words(@product.updated_at) + " ago" %>

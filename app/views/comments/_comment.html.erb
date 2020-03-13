@@ -1,5 +1,13 @@
-<div class="bg-light p-3">
-  <h6 class="text-success"><%= comment.user.name %> asked:</h6>
-  <p class="blockquote"><%= comment.body %></p>
-  <p class="mb-0"><%= time_ago_in_words(comment.created_at) %> ago</p>
+<div class="border rounded p-3 mb-4">
+  <div class="row">
+    <div class="col-md-3">
+      <img src="https://via.placeholder.com/100" alt="Avatar">
+    </div>
+    <div class="col-md-9">
+      <h5 class="text-primary text-uppercase"><%= comment.user.name %> asked:</h5>
+      <p class="text-secondary"><%= comment.body %></p>
+      <p class="mb-0 text-muted"><%= time_ago_in_words(comment.created_at) %> ago</p>
+      <button class="reply btn-warning">Reply</button>
+    </div>
+  </div>
 </div>
