@@ -1,0 +1,24 @@
+<h3>More products By
+  <%= @product.user.name %>
+</h3>
+
+<div class="row mt-4 mb-5">
+  <% @user_products.each do |user_product| %>
+  <div class="col-md-6">
+    <div class="card mb-4 shadow-sm">
+      <% if user_product.image.attached? %>
+      <%= cl_image_tag(user_product.image.key, options = {class: 'img-fluid'}) %>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title">
+          <%= user_product.title %>
+        </h5>
+        <p class="card-text">
+          <%= user_product.description %>
+        </p>
+        <%= link_to 'View product', user_product, class: "btn btn-success text-center" %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

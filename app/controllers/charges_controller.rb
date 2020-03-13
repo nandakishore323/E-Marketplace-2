@@ -1,5 +1,5 @@
 class ChargesController < ApplicationController
-    before_action :find_product
+    before_action :authenticate_user
 
     def new
     end
@@ -20,14 +20,12 @@ class ChargesController < ApplicationController
         :currency    => 'inr'
       )
 
+      flash[:notice] = "Thankyou for purchasing #{@product.title}, Your payment has been recieved"
+      redirect_to products_path
+
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to new_charge_path
     end
 
-    private
-
-    def find_product
-      @product = Product.find(params[:product_id])
-    end
 end

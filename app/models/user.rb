@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :products
   has_many :comments, dependent: :destroy
   validates :name, presence: true
+  has_one_attached :image  
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

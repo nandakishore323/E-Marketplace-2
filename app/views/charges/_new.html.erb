@@ -7,7 +7,7 @@
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button d-none"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="<%= @product.title %>"
-          data-amount="<%= (@product.price * 100).to_i %>"
+          data-amount="<%= @product.price.to_i %>"
           data-currency="INR"
           data-locale="auto"></script>
           <script>

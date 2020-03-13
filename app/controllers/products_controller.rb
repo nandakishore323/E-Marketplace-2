@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @user_products = @product.user.products.order('created_at DESC').limit(2)
+    session[:product_id] = params[:id]
   end
 
   # GET /products/new
@@ -73,5 +74,5 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:title, :description, :subject, :image, :price)
     end
-    
+
 end
