@@ -1,7 +1,11 @@
 <div class="border rounded p-3 mb-4">
   <div class="row">
     <div class="col-md-3">
-      <img src="https://via.placeholder.com/100" alt="Avatar">
+      <% if comment.user.avatar.url.present? %>
+        <%= image_tag(comment.user.avatar.url(:comments)) %>
+      <% else %>
+        <%= image_tag 'https://via.placeholder.com/100' %>
+      <% end %>
     </div>
     <div class="col-md-9">
       <h5 class="text-primary text-uppercase"><%= comment.user.name %> asked:</h5>
