@@ -7,7 +7,11 @@
       <h5 class="text-primary text-uppercase"><%= comment.user.name %> asked:</h5>
       <p class="text-secondary"><%= comment.body %></p>
       <p class="mb-0 text-muted"><%= time_ago_in_words(comment.created_at) %> ago</p>
-      <button class="reply btn-warning">Reply</button>
+      <div class="buttons">
+          <button class="btn btn-info">Edit</button>
+          <button class="btn btn-warning">Reply</button>
+          <%= link_to 'Delete', product_comment_path(comment.product, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </div>
     </div>
   </div>
 </div>

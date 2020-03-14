@@ -13,4 +13,7 @@ module ApplicationHelper
         nil
       end
     
+      def limit_characters_helper(source, maximum)
+        truncate(source, length: maximum)
+      end
 end

@@ -1,25 +1,26 @@
 class RepliesController < ApplicationController
-    before_action :authenticate_user!, except: [:index]
-    before_action :find_listing!
+    before_action :authenticate_user!
+    before_action :find_product!
+    before_action :find_comment!
 
-    def index
-        @replies = @listing.comments.order(created_at: :desc)
-    end
 
     def create
-        @reply = @listing.comments.new(comment_params)
-        @reply.user = current_user
-        @reply.user.avatar = current_user.avatar
+        @reply = @comment.build_reply(reply_params)
         @reply.save
-        redirect_to listing_path(@listing)
+        redirect_to product_path(@product)
     end
 
     private
-    def find_listing!
-        @listing = Listing.find(params[:listing_id])
+    def find_product!
+        @product = Product.find(params[:product_id])
     end
 
-    def comment_params
+    
+    def find_comment!
+        @comment = @product.comments.find(params[:id])
+    end
+
+    def reply_params
         params.require(:reply).permit(:reply_body)
     end
 end

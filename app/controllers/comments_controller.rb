@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
     @comment = @product.comments.new(comment_params)
     @comment.user = current_user
     @comment.save
+    session[:comment_id] = params[:id]
     redirect_to product_url(@product)
   end
 
@@ -17,7 +18,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @product = @comment.product
     @comment.destroy
-    redirect_to products_path(@product)
+    redirect_to product_path(@product)
   end
 
   private

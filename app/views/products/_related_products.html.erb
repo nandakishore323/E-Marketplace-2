@@ -14,7 +14,7 @@
           <%= user_product.title %>
         </h5>
         <p class="card-text">
-          <%= user_product.description %>
+          <%= limit_characters_helper(user_product.description, 200) %>
         </p>
         <%= link_to 'View product', user_product, class: "btn btn-success text-center" %>
       </div>

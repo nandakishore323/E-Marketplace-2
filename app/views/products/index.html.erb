@@ -22,7 +22,7 @@
         <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= product.title %></h5>
-          <p class="card-text"><%= product.description %></p>
+          <p class="card-text"><%= limit_characters_helper(product.description, 200) %></p>
           <%= link_to 'View Product', product, class: "btn btn-primary" %>
           <br />
           <p style="float:right;">
