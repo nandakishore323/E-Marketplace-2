@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates_integrity_of  :avatar
   validates_processing_of :avatar
 
+  has_many :replies, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

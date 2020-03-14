@@ -3,6 +3,7 @@ class Product < ApplicationRecord
   validates :price, numericality: { only_integer: true }
 
   has_many :comments, dependent: :destroy
+  has_many :replies, dependent: :destroy
   belongs_to :user
   has_one_attached :image
 
