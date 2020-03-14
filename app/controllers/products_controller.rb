@@ -12,7 +12,6 @@ class ProductsController < ApplicationController
   def show
     @user_products = @product.user.products.order('created_at DESC').limit(2)
     session[:product_id] = params[:id]
-    session[:comment_id] = params[:id]
   end
 
   # GET /products/new

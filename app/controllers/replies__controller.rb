@@ -20,7 +20,7 @@ class RepliesController < ApplicationController
 
 
     def find_comment!
-        @comment = @product.comments.find(params[:comment_id])
+        @comment = @product.comments.find(params[:id])
     end
 
     def reply_params
