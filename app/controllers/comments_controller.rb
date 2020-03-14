@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @product.comments.new(comment_params)
     @comment.user = current_user
+    @comment.user.avatar = current_user.avatar
     @comment.save
     session[:comment_id] = params[:id]
     redirect_to product_url(@product)
