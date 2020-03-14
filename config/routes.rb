@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'searches/new'
+  get 'searches/create'
+  get 'searches/show'
   post 'comments/create'
   post 'comments/destroy'
   resources :products do
@@ -9,6 +12,7 @@ Rails.application.routes.draw do
   end
   devise_for :users, controllers: {omniauth_callbacks: 'omniauth'}
   resources :charges
+  resources :searches
   root to: 'products#index'
   get "about", to: "pages#about"
   get "contact_us", to: "pages#contact_us"
