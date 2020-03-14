@@ -9,11 +9,11 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   version :thumbnail do
-    resize_to_fit(50, 50)
+    resize_to_fill(50, 50, :north)
   end
 
   version :comments do
-    resize_to_fit(100, 100)
+    resize_to_fill(100, 100, :north)
   end
 
   def size_range
