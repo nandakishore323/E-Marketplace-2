@@ -12,7 +12,17 @@ module ApplicationHelper
         end
         nil
       end
-    
+      
+      def subjects_helper
+        [
+          ['Books'],
+          ['Cycle'],
+          ['Drafter'],
+          ['Room Appliances'],
+          ['Others']
+        ]
+      end
+
       def limit_characters_helper(source, maximum)
         truncate(source, length: maximum)
       end
