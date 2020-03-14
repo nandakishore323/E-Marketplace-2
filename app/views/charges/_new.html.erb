@@ -1,0 +1,19 @@
+<%= form_tag charges_path do %>
+    <article>
+      <% if flash[:error].present? %>
+        <%= flash[:error] %>
+      <% end %>
+    </article>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button d-none"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="<%= @listing.title %>"
+            data-amount="<%= (@listing.price * 100).to_i %>"
+            data-currency="AUD"
+            data-locale="auto"></script>
+            <script>
+            // Hide default stripe button, be careful there if you
+            // have more than 1 button of that class
+            document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
+            </script>
+            <button type="submit" class="btn w-100 my-3 py-3 d-block btn-success">Buy Now!</button>
+    <% end %>
