@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post 'comments/destroy'
   resources :products do
     resources :comments do
-      resources :replies, only: [:create]
+      resources :replies
     end
     resources :charges, only: [:new, :create]
   end

@@ -13,7 +13,7 @@
 
     <p>
       <strong>Price:</strong>
-      <%= number_to_currency(@product.price) %>
+      <%= "₹ " + @product.price.to_s %>
     </p>
 
     <p>
@@ -46,7 +46,7 @@
               <h4 class="my-0 font-weight-normal"><%= @product.title %></h4>
             </div>
             <div class="card-body">
-              <h1 class="card-title pricing-card-title"><%= number_to_currency(@product.price) %></h1>
+              <h1 class="card-title pricing-card-title"><%= "₹ " + @product.price.to_s %></h1>
               <ul class="list-unstyled mt-3 mb-4">
                 <p class="text-muted">What's included?</p>
                 <li><%= fa_icon "check-circle", text: "10 pages of content" %></li>

@@ -3,6 +3,9 @@ class RepliesController < ApplicationController
     before_action :find_product!
     before_action :find_comment!
 
+    def new
+      @reply = Reply.new
+    end
 
     def create
         @reply = @comment.build_reply(reply_params)
@@ -15,7 +18,7 @@ class RepliesController < ApplicationController
         @product = Product.find(params[:product_id])
     end
 
-    
+
     def find_comment!
         @comment = @product.comments.find(params[:id])
     end
@@ -24,4 +27,3 @@ class RepliesController < ApplicationController
         params.require(:reply).permit(:reply_body)
     end
 end
-

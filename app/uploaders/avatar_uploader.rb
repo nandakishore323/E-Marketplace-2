@@ -17,7 +17,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def size_range
-    30.kilobyte..5.megabyte
+    1.byte..5.megabyte
   end
 
   # Choose what kind of storage to use for this uploader:
