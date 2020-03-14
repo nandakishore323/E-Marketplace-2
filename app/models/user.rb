@@ -2,7 +2,10 @@ class User < ApplicationRecord
   has_many :products
   has_many :comments, dependent: :destroy
   validates :name, presence: true
-  has_one_attached :image  
+  mount_uploader :avatar, AvatarUploader
+  validates_presence_of   :avatar
+  validates_integrity_of  :avatar
+  validates_processing_of :avatar
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -16,6 +19,8 @@ class User < ApplicationRecord
       user.email = provider_data.info.email
       user.password = Devise.friendly_token[0, 20]
       user.name = auth.info.name   # assuming the user model has a name
+      user.remote_avatar_url = auth.info.image
+      user.skip_confirmation
     end
   end
 end

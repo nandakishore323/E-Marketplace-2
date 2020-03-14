@@ -77,3 +77,5 @@ gem "image_processing", "~> 1.7"
 
 # Stripe
 gem 'stripe'
+
+gem 'carrierwave', '~> 1.2', '>= 1.2.3'
