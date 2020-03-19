@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :find_product!
+  before_action :find_product
 
   def index
     @comments = @product.comments.order(created_at: :desc)
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
   end
 
   private
-    def find_product
+    def find_product!
       @product = Product.find(params[:product_id])
     end
 
