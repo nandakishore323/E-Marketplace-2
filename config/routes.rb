@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-=======
   get '/user/:id', to: 'user#show', as: 'user'
   # post '/comment/:comment_id/reply', to: 'replies_#create', as: 'reply'
   get 'user/show'
->>>>>>> c3cb37697f4c02237f25d49e37670600cce0fe43
   get 'searches/new'
   get 'searches/create'
   get 'searches/show'
