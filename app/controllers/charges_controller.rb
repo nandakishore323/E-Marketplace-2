@@ -5,7 +5,8 @@ class ChargesController < ApplicationController
     end
 
     def create
-      # Amount in cents
+      @product = Product.find(session[:listing_id])
+
       @amount = @product.price
 
       customer = Stripe::Customer.create(
