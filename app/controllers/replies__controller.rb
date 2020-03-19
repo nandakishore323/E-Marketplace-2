@@ -1,6 +1,6 @@
 class RepliesController < ApplicationController
     before_action :authenticate_user!
-    before_action :find_product!
+    # before_action :find_product!
     before_action :find_comment!
 
     def new
@@ -14,13 +14,13 @@ class RepliesController < ApplicationController
     end
 
     private
-    def find_product!
-        @product = Product.find(params[:product_id])
-    end
+    # def find_product!
+    #     @product = Product.find(params[:product_id])
+    # end
 
 
     def find_comment!
-        @comment = @product.comments.find(params[:id])
+        @comment = Comment.find(params[:comment_id])
     end
 
     def reply_params

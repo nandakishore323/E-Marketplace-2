@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
+  get '/user/:id', to: 'user#show', as: 'user'
+  # post '/comment/:comment_id/reply', to: 'replies_#create', as: 'reply'
+  get 'user/show'
   get 'searches/new'
   get 'searches/create'
   get 'searches/show'
   post 'comments/create'
   post 'comments/destroy'
   resources :products do
-    resources :comments do
-      resources :replies
-    end
+    resources :comments
     resources :charges, only: [:new, :create]
   end
   devise_for :users, controllers: {omniauth_callbacks: 'omniauth'}
