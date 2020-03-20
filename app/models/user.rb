@@ -3,6 +3,9 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   validates :name, presence: true
   mount_uploader :avatar, AvatarUploader
+  validates_presence_of   :avatar
+  validates_integrity_of  :avatar
+  validates_processing_of :avatar
 
   has_many :replies, dependent: :destroy
   # Include default devise modules. Others available are:
