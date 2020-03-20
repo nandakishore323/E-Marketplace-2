@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  get '/user/:id', to: 'user#show', as: 'user'
+  get 'user/:id', to: 'user#show', as: 'user'
   # post '/comment/:comment_id/reply', to: 'replies_#create', as: 'reply'
   get 'user/show'
   get 'searches/new'
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :comments
     resources :charges, only: [:new, :create]
   end
+  post 'products/:product_id/:comment_id/reply', to: 'replies_#create', as: 'create_reply'
   devise_for :users, controllers: {omniauth_callbacks: 'omniauth'}
   resources :charges
   resources :searches

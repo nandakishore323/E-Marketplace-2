@@ -36,6 +36,6 @@
       </div>
     </div>
   </div>
-
-  <%= render 'replies/form' %>
+  <% else %>
+  <%= render 'replies_/form', product_id: @product.id, comment_id: comment.id %>
 <% end %>

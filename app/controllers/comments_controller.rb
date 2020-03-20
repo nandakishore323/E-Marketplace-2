@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
     @comment.user.avatar = current_user.avatar
     @comment.save
     session[:comment_id] = params[:id]
+    flash[:notice] = "Your question has been posted"
     redirect_to product_url(@product)
   end
 
@@ -23,7 +24,7 @@ class CommentsController < ApplicationController
   end
 
   private
-    def find_product!
+    def find_product
       @product = Product.find(params[:product_id])
     end
 

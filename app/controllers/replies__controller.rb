@@ -8,8 +8,8 @@ class RepliesController < ApplicationController
     end
 
     def create
-        @reply = @comment.build_reply(reply_params)
-        @reply.save
+        # @reply = @comment.build_reply(reply_params)
+        # @reply.save
         redirect_to product_path(@product)
     end
 
