@@ -24,6 +24,9 @@ class ChargesController < ApplicationController
       flash[:notice] = "Thankyou for purchasing #{@product.title}, Your payment has been recieved"
       redirect_to products_path
 
+      ModelMailer.new_record_notification(@listing).deliver
+      redirect_to listings_path
+
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to new_charge_path
