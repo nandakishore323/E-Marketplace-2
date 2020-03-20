@@ -5,7 +5,7 @@ class ChargesController < ApplicationController
     end
 
     def create
-      @product = Product.find(session[:listing_id])
+      @product = Product.find(session[:product_id])
 
       @amount = @product.price
 

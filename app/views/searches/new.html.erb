@@ -9,13 +9,13 @@
 
 <div class="field">
     <%= s.label :subject %><br />
-    <%= s.collection_select :subject, include_blank: true %>
+    <%= s.select :subject, options_for_select(subjects_helper), {}, class: 'form-control' %>
 </div>
 
 <div class="field">
 <%= s.label :min_price, "Price Range" %><br />
-<%= s.text_field :min_price, size: 0 %>
-<%= s.text_field :max_price, size: 500 %>
+<%= s.text_field :min_price, size: 0, placeholder: "Min Price" %>
+<%= s.text_field :max_price, size: 0, placeholder: "Max Price" %>
 
 <div class="actions"><%= s.submit "Search" %></div>
 
