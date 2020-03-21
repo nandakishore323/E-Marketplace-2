@@ -1,0 +1,27 @@
+<div class="col-md-4">
+    <div class="card mb-4 shadow-sm sticky">
+        <div class="card-header">
+          <% if @product.user.avatar.url.present? %>
+            <%= image_tag @product.user.avatar.url(:thumbnail), class: 'rounded-circle default-avatar mr-3' %>
+          <% end %>
+          Posted by <%= @product.user.name %>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title"><%= "₹ " + @product.price.to_s %></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <p class="text-muted">What's included?</p>
+            <li><%= fa_icon "check-circle", text: "10 pages of content" %></li>
+            <li><%= fa_icon "check-circle", text: "Email Support" %></li>
+            <li><%= fa_icon "check-circle", text: "Future Updates" %></li>
+            <li><%= fa_icon "check-circle", text: "30 Day Guarentee" %></li>
+          </ul>
+          <%= render 'charges/form' %>
+          <div class="text-center mt-3">
+            <% if @product.updated_at > @product.created_at %>
+              <%= "Updated " + time_ago_in_words(@product.updated_at) + " ago" %> by <%= @product.user.name %>
+            <% else %>
+              <%= "Created " + time_ago_in_words(@product.created_at) + " ago" %> by <%= @product.user.name %>
+            <% end %>
+        </div>
+    </div>
+</div>
