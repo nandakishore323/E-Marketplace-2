@@ -14,7 +14,7 @@
           <p class="card-text"><%= limit_characters_helper(product.description, 100) %></p>
           <div class="d-flex align-items-center justify-content-between">
             <%= link_to 'View Product', product, class: "btn btn-success" %>
-            <p class="lead m-0"><%= number_to_currency(product.price) %></p>
+            <p class="lead m-0"><%= "₹ " + product.price.to_s %></p>
           </div>
         </div>
       </div>
