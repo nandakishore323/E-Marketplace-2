@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   post 'comments/create'
   post 'comments/destroy'
   resources :products do
-    resources :comments
+    resources :comments do
+      resources :reply, only: [:create]
+    end
     resources :charges, only: [:new, :create]
   end
   devise_for :users, controllers: {omniauth_callbacks: 'omniauth'}

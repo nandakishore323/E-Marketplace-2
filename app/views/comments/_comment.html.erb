@@ -24,18 +24,18 @@
   <div class="row">
     <div class="ml-auto d-flex p-3 align-items-center bg-light rounded">
       <div class="col-md-2">
-        <% if @product.user.avatar.url.present %>
+        <% if @product.user.avatar.url.present? %>
           <%= image_tag(@product.user.avatar.url(:comments), class: 'rounded-circle img-fluid') %>
         <% else %>
           <%= image_tag 'https://via.placeholder.com/100', class: 'rounded-circle img-fluid' %>
         <% end %>
       </div>
       <div class="col-md-10">
-        <h5 class="text-primary text-uppercase"><span class="text-danger"><%= comment.user.name.split(" ").first %></span> Answered</h5>
+        <h5 class="text-primary text-uppercase"><span class="text-danger"><%= get_user_first_name(@product.user.name) %></span> Answered:</h5>
         <p class="text-secondary"><%= comment.reply.reply_body %></p>
       </div>
     </div>
   </div>
-
-  <%= render 'replies/form' %>
+<% else %>
+  <%= render 'reply/form', product_id: @product.id, comment_id: comment.id %>
 <% end %>
