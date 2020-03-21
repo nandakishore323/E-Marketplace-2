@@ -32,13 +32,13 @@
       <div class="input-group-prepend">
           <div class="input-group-text">₹INR</div>
       </div>
-      <%= form.text_field :price, class: 'form-control' %>
+      <%= form.text_field :price, class: 'form-control', type: 'number' %>
     </div>
   </div>
 
   <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_area :description, class: 'form-control' %>
+    <%= form.text_area :description, class: 'form-control expand' %>
   </div>
 
   <div class="actions">
