@@ -13,6 +13,13 @@ class RepliesController < ApplicationController
         redirect_to product_path(@product)
     end
 
+    def destroy
+        @reply = @comment.reply
+        @reply.destroy
+        redirect_to product_path(@product)
+    end
+
+
     private
     # def find_product!
     #     @product = Product.find(params[:product_id])
