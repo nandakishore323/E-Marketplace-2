@@ -18,3 +18,12 @@
 //= require turbolinks
 //= require_tree .
 //= require iziToast
+
+$(document).ready(function () {
+    $("#edit_user").on('submit', function () {
+    });
+  });
+  
+  function submitForm() {
+    $('#edit_user').submit();
+  } 

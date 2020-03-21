@@ -1,52 +1,54 @@
 <h2>Edit Profile</h2>
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= devise_error_messages! %>
 
-  <div class="form-row">
+  <div class="row my-3">
+  <% if current_user.avatar.url.present? %>
+    <div class="col-md-2 d-flex flex-column align-items-center">
+    <%= image_tag current_user.avatar.url(:standard), class: 'img-thumbnail img-fluid' %>
+      <%= f.label :avatar, 'Upload Avatar', class: 'btn btn-primary btn-block mt-2' %>
+      <%= f.file_field :avatar, class: 'd-none', onchange: "submitForm()" %>
+      <%= f.hidden_field :avatar_cache %>
+    </div>
+    <% else %>
+      <div class="mb-3">
+        <p>Upload an avatar</p>
+        <%= f.file_field :avatar, class: 'p-3 h-100 bg-light form-control' %>
+        <%= f.hidden_field :avatar_cache %>
+      </div>
+  <% end %>
+
+
+  <div class="col-md-8">
     <div class="form-group col-md-6">
-     <%= f.label :name %><br />
-     <%= f.text_field :name, autofocus: true, class: "form-control" %>
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autofocus: true, class: "form-control" %>
     </div>
 
     <div class="form-group col-md-6">
-        <%= f.label :preferred_name %><br />
-        <%= f.text_field :preferred_name, autofocus: true, class: "form-control", placeholder: "Display name" %>
+          <%= f.label :preferred_name %><br />
+          <%= f.text_field :preferred_name, autofocus: true, class: "form-control", placeholder: "Display name" %>
     </div>
   </div>
 
-  <% if current_user.avatar.url.present? %>
-    <%= image_tag current_user.avatar.url(:standard), class: 'img-thumbnail' %>
-    <%= f.label :remove_avatar do %>
-      <%= f.check_box :remove_avatar %>
-    <% end %>
-    <%= f.file_field :avatar, class: 'p-3 h-100 bg-light form-control' %>
-    <%= f.hidden_field :avatar_cache %>
-  <% else %>
-    <div class="mb-3">
-      <p>Upload an avatar</p>
-      <%= f.file_field :avatar, class: 'bg-light form-control' %>
-      <%= f.hiddent_field :avatar_cache %>
-    </div>
-  <% end %>
+  </div>
+
 
   <div class="form-group">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
   </div>
-
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
-
   <div class="form-group">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
     <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
     <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+    <em class="text-muted"><%= @minimum_password_length %> characters minimum</em>
     <% end %>
   </div>
+
 
   <div class="form-group">
     <%= f.label :password_confirmation %><br />
@@ -54,17 +56,11 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
-  </div>
+      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+      <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
+    </div>
 
   <div class="actions">
     <%= f.submit "Update", class: 'btn btn-primary mb-5' %>
-  </div>
-<% end %>
 
-<h3 class="my-3">Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger' %></p>
-
-<%= link_to "Back", :back, class: 'btn btn-secondary mb-5' %>
+ <% end %>   
