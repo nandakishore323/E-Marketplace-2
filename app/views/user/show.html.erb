@@ -1,25 +1,33 @@
-
-<h1><%= @user.name %></h1>
+<div class="my-4 bg-light py-4 px-5 text-center">
+  <h4 class="m-0">Welcome to your dashboard, <span class="text-success"><%= get_user_first_name(@user.name) %></span></h4>
+  <br>
+  <p class="text-muted">Member since <%= time_ago_in_words(current_user.created_at) %> ago</p>
+</div>
 
 <h2>My Products</h2>
 <div class="row">
-  <% @products.each do |product| %>
-  <div class="col-md-3">
-      <div class="card mb-4 shadow-sm">
-        <% if product.image.attached? %>
-            <%= cl_image_tag(product.image.key, options = {class: 'img-fluid'}) %>
-        <% end %>
-        <div class="card-body">
-          <h5 class="card-title"><%= product.title %></h5>
-          <p class="card-text"><%= limit_characters_helper(product.description, 100) %></p>
-          <div class="d-flex align-items-center justify-content-between">
-            <%= link_to 'View Product', product, class: "btn btn-success" %>
-            <p class="lead m-0"><%= "₹ " + product.price.to_s %></p>
+  <% if @products.count == 0 %>
+    <div class="col-md-6">
+      <p>You have no products sold. Sell one now</p>
+      <%= link_to "Create Product", new_product_path, class: 'btn btn-success' %>
+    </div>
+  <% else %>
+    <% @products.each do |product| %>
+      <div class="col-md-3">
+          <div class="card mb-4 shadow-sm">
+            <% if product.image.attached? %>
+                <%= cl_image_tag(product.image.key, options = {class: 'img-fluid'}) %>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= product.title %></h5>
+              <p class="card-text"><%= limit_characters_helper(product.description, 100) %></p>
+              <div class="d-flex align-items-center justify-content-between">
+                <%= link_to 'View Product', product, class: "btn btn-success" %>
+                <p class="lead m-0"><%= "₹ " + product.price.to_s %></p>
+              </div>
+            </div>
           </div>
-        </div>
       </div>
-  </div>
+    <% end %>
   <% end %>
 </div>
-
-<h3>Purchased Items</h3>
