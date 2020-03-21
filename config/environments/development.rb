@@ -62,13 +62,13 @@ Rails.application.configure do
   # Devise
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-  config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {
-  :authentication => :plain,
-  :address => "smtp.mailgun.org",
-  :port => 587,
-  :domain => "sandbox577f2fdf4fee44d7a7cdf8621e3bdb14.mailgun.org",
-  :user_name => "postmaster@sandbox577f2fdf4fee44d7a7cdf8621e3bdb14.mailgun.org",
-  :password => "MYPASSWORD"
-}
+  #config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.smtp_settings = {
+  #:authentication => :plain,
+  #:address => "smtp.mailgun.org",
+  #:port => 587,
+  #:domain => "sandbox577f2fdf4fee44d7a7cdf8621e3bdb14.mailgun.org",
+  #:user_name => "postmaster@sandbox577f2fdf4fee44d7a7cdf8621e3bdb14.mailgun.org",
+  #:password => "MYPASSWORD"
+#}
 end

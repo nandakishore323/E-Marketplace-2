@@ -19,7 +19,7 @@
   <div class="col-md-4">
       <div class="card mb-4 shadow-sm">
         <% if product.image.attached? %>
-        <%= cl_image_tag(listing.image.key, width: 400, height: 300, crop: :fill, class: 'img-fluid')%>
+        <%= cl_image_tag(product.image.key, width: 400, height: 300, crop: :fill, class: 'img-fluid')%>
                 <% else %>
           <img class="card-img-top" src="http://via.placeholder.com/300" alt="Card image">
         <% end %>

@@ -91,3 +91,6 @@ gem "cancan"
 gem 'rails_admin', '~> 1.4', '>= 1.4.2'
 
 gem 'izitoast', '~> 1.4'
+
+# Rolify
+gem 'rolify', '~> 5.1'

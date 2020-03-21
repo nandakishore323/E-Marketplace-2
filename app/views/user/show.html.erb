@@ -3,6 +3,11 @@
 
 <h2>My Products</h2>
 <div class="row">
+<% if @products.count == 0 %>
+<div class="col-md-6">
+  <p>You have no product to display, create one now!</p>
+  </div>
+<% end %>
   <% @products.each do |product| %>
   <div class="col-md-3">
       <div class="card mb-4 shadow-sm">
@@ -22,4 +27,4 @@
   <% end %>
 </div>
 
-<h3>Purchased Items</h3>
+<h4 class="text-muted mt-4">Purchased Items</h4>

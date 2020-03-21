@@ -1,22 +1,24 @@
-<%= form_for([@product, @product.comments.build]) do |f| %>
-<% if @product.errors.any? %>
-<div id="error_explanation">
-  <h2>
-    <%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
-  <ul>
-    <% product.errors.full_messages.each do |message| %>
-    <li>
-      <%= message %>
-    </li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
-<p>
-  <%= f.text_area :body, class: 'form-control', placeholder: 'Type your question here' %>
-</p>
-<br>
-<p>
-  <%= f.submit 'Submit Question', class: 'btn btn-success' %>
-</p>
-<% end %>
+<% if current_user != @product.user %>
+  <%= form_for([@product, @product.comments.build]) do |f| %>
+  <% if @product.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+    <ul>
+      <% product.errors.full_messages.each do |message| %>
+      <li>
+        <%= message %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <p>
+    <%= f.text_area :body, class: 'form-control', placeholder: 'Type your question here' %>
+  </p>
+  <br>
+  <p>
+    <%= f.submit 'Submit Question', class: 'btn btn-success' %>
+  </p>
+  <% end %>
+ <% end %>

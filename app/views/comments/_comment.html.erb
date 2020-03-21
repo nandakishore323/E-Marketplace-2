@@ -36,7 +36,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <p class="mb-0 text-muted"><%= time_ago_in_words(comment.created_at) %> ago</p>
           <div class="buttons">
-            <%= link_to 'Delete', listing_comment_reply_path({ listing_id: @listing.id, comment_id: comment.id }), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            <%= link_to 'Delete', product_comment_reply_path({ product_id: @product.id, comment_id: comment.id }), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
           </div>
           </div> 
       </div>
