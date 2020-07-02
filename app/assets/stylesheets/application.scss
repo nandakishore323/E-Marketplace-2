@@ -33,3 +33,292 @@
 //   background-color: #f5f5f5;
 //   overflow: hidden;
 // }
+
+@import "iziToast";
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #ecf0f1 !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #b4bcc2 !default;
+$gray-600: #95a5a6 !default;
+$gray-700: #7b8a8b !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+$blue: #2C3E50 !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e83e8c !default;
+$red: #E74C3C !default;
+$orange: #fd7e14 !default;
+$yellow: #F39C12 !default;
+$green: #18BC9C !default;
+$teal: #20c997 !default;
+$cyan: #3498DB !default;
+
+$primary: $blue !default;
+$secondary: $gray-600 !default;
+$success: $green !default;
+$info: $cyan !default;
+$warning: $yellow !default;
+$danger: $red !default;
+$light: $gray-200 !default;
+$dark: $gray-900 !default;
+$yiq-contrasted-threshold: 175 !default;
+
+// Links
+$link-color: $success !default;
+
+// Fonts
+$font-family-sans-serif: "Lato",
+-apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+"Helvetica Neue",
+Arial,
+sans-serif,
+"Apple Color Emoji",
+"Segoe UI Emoji",
+"Segoe UI Symbol" !default;
+
+$font-size-base: 0.9375rem !default;
+$h1-font-size: 3rem !default;
+$h2-font-size: 2.5rem !default;
+$h3-font-size: 2rem !default;
+
+// Tables
+$table-accent-bg: $gray-200 !default;
+
+// Dropdowns
+$dropdown-link-color: $gray-700 !default;
+$dropdown-link-hover-color: $white !default;
+$dropdown-link-hover-bg: $primary !default;
+
+// Navs
+$nav-link-padding-y: .5rem !default !default;
+$nav-link-padding-x: 2rem !default;
+$nav-link-disabled-color: $gray-600 !default !default;
+$nav-tabs-border-color: $gray-200 !default;
+
+// Navbar
+$navbar-padding-y: 1rem !default;
+$navbar-dark-color: $white !default;
+$navbar-dark-hover-color: $success !default;
+
+// Pagination
+$pagination-color: $white !default;
+$pagination-bg: $success !default;
+$pagination-border-width: 0 !default;
+$pagination-border-color: transparent !default;
+$pagination-hover-color: $white !default;
+$pagination-hover-bg: darken($success, 15%) !default;
+$pagination-hover-border-color: transparent !default;
+$pagination-active-bg: $pagination-hover-bg !default;
+$pagination-active-border-color: transparent !default;
+$pagination-disabled-color: $gray-200 !default;
+$pagination-disabled-bg: lighten($success, 15%) !default;
+$pagination-disabled-border-color: transparent !default;
+
+// Progress bars
+$progress-height: 0.625rem !default;
+$progress-font-size: 0.625rem !default;
+
+// List group
+$list-group-hover-bg: $gray-200 !default;
+$list-group-disabled-bg: $gray-200 !default;
+
+// Close
+$close-color: $white !default;
+$close-text-shadow: none !default;
+
+// Fonts
+$web-font-path: "https://fonts.googleapis.com/css?family=Lato:400,700,400italic" !default;
+@import url($web-font-path);
+
+@import "bootstrap";
+@import "font-awesome";
+
+// Custom styles starts here...
+
+body {
+  font-size: 17px;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.text-box {
+  min-height: 4rem;
+}
+
+// Search bar
+.dropdown-menu-search {
+  width: 17rem !important;
+}
+
+.form-control-search {
+  border: 0;
+  border-top-left-radius: 5px !important;
+  border-bottom-left-radius: 5px !important;
+}
+
+// Expand
+
+textarea.expand {
+  transition: all 3s ease-in-out;
+}
+
+textarea.expand:focus {
+  transition: all 3s ease-in-out;
+  height: 10em;
+}
+
+.img-box {
+  position: relative;
+}
+
+.avatar-image {
+  position: absolute;
+  width: 85px;
+  height: 85px;
+  bottom: 0;
+  left: 50%;
+  background: white;
+  border: 6px solid white;
+  transform: translate(-50%, 50%);
+}
+
+.stripe-button-el {
+  display: none !important;
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10px;
+}
+
+.default-avatar {
+  max-height: 60px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.bg-primary {
+  .navbar-nav .active>.nav-link {
+    color: $success !important;
+  }
+}
+
+.bg-dark {
+  // background-color: $success !important;
+
+  &.navbar-dark .navbar-nav {
+
+    .nav-link:focus,
+    .nav-link:hover,
+    .active>.nav-link {
+      color: $primary !important;
+    }
+  }
+}
+
+.btn {
+
+  &-secondary,
+  &-secondary:hover,
+  &-warning,
+  &-warning:hover {
+    color: #fff;
+  }
+}
+
+
+.nav-tabs {
+
+  .nav-link.active,
+  .nav-link.active:focus,
+  .nav-link.active:hover,
+  .nav-item.open .nav-link,
+  .nav-item.open .nav-link:focus,
+  .nav-item.open .nav-link:hover {
+    color: $primary;
+  }
+}
+
+.pagination {
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.close {
+  text-decoration: none;
+  opacity: 0.4;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+}
+
+.badge {
+
+  &-secondary,
+  &-warning {
+    color: #fff;
+  }
+}
+
+.alert {
+  border: none;
+  color: $white;
+
+  a,
+  .alert-link {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  @each $color,
+  $value in $theme-colors {
+    &-#{$color} {
+      @if $enable-gradients {
+        background: $value linear-gradient(180deg, mix($body-bg, $value, 15%), $value) repeat-x;
+      }
+
+      @else {
+        background-color: $value;
+      }
+    }
+  }
+
+  &-light {
+
+    &,
+    & a,
+    & .alert-link {
+      color: $body-color;
+    }
+  }
+}
+
+.modal .close {
+  color: $black;
+
+  &:not(:disabled):not(.disabled):hover,
+  &:not(:disabled):not(.disabled):focus {
+    color: $black;
+  }
+}

@@ -1,47 +1,60 @@
 <div class="row">
   <div class="col-md-8">
-    <div class="product-image">
+    <div class="listing-image">
       <% if @product.image.attached? %>
-        <%= cl_image_tag(@product.image.key, options = {class: 'img-fluid img-thumbnail'}) %>
-        <!-- <img src="https://via.placeholder.com/750x500" alt="Product image" class="img-fluid img-thumbnail" > -->
+          <%= cl_image_tag(@product.image.key, options = {class: 'img-fluid img-thumbnail'}) %>
       <% end %>
     </div>
-
-    <h2 class="mt-2 mb-3">
+    
+    <hr>
+    
+    <h2 class="my-3">
       <%= @product.title %>
     </h2>
 
     <p>
-      <strong>Price:</strong>
-      <%= "₹ " + @product.price.to_s %>
-    </p>
-
-    <p>
-      <strong>Subject:</strong>
-      <%= @product.subject %>
-    </p>
-
-    <p>
-      <strong>Description:</strong>
+      <strong>Description:</strong><br>
       <%= @product.description %>
     </p>
 
-    <div class="actions mb-5">
-      <% if current_user && (@product.user == current_user || current_user.superadmin_role) %>
-      <%= link_to 'Edit Product', edit_product_path(@product), class: 'btn btn-primary mr-2' %>
-      <%= link_to 'Delete Product', @product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger mr-2' %>
-    <% end %>
-      <%= link_to 'Back', products_path, class: 'btn btn-default' %>
+    <hr>
+
+    <div class="d-flex align-items-center my-3">
+      <%= fa_icon 'chevron-circle-right', class: "mr-3 fa-2x text-success" %><span class="mr-2 font-weight-bold">Subject: </span>
+      <%= @product.subject %>
     </div>
 
-    <hr />
+    <hr>
+
+    <div class="actions my-3">
+      <% if current_user && (@product.user == current_user || current_user.superadmin_role) %>
+        <%= link_to 'Edit Product', edit_product_path(@product), class: 'btn btn-primary mr-2' %>
+        <%= link_to 'Delete Listing', @product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger mr-2' %>
+      <% end %>
+      <%= link_to 'Back', root_path, class: 'btn btn-secondary ' %>
+    </div>
+
+    <hr>
+    
+    
+    <hr>
+
+    <%= render 'products/comments' %>
+
+
+    <hr>
 
     <%= render 'products/related_products' %>
 
-    <hr />
-
-    <%= render 'products/comments' %>
   </div>
 
   <%= render 'products/sidebar' %>
+  
+
+  <hr>
+
+  
+
+  
+
 </div>

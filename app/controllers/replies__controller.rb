@@ -1,6 +1,6 @@
 class RepliesController < ApplicationController
     before_action :authenticate_user!
-    # before_action :find_product!
+     before_action :find_product!
     before_action :find_comment!
 
     def new

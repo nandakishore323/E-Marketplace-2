@@ -8,9 +8,9 @@ local:
 
 cloudinary:
   service: Cloudinary
-  cloud_name: "sample"
-  api_key: "98785549878945"
-  api_secret: "3s258d44f1s2a22g22d23a3s3d22a3d2"
+  cloud_name: "dylofkqcx"
+  api_key: "113148844134117"
+  api_secret: "sd18mRf5H7hlM7t761bdi54NKaU"
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:

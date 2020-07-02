@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :products do
     resources :comments do
-      resources :reply, only: [:create, :destroy]
+      resources :replies_, only: [:create, :destroy]
     end
   end
 
@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   get "about", to: "pages#about"
   get "contact_us", to: "pages#contact"
   get "/user/:id", to: "user#show", as: 'user'
+  post '/products/:id', to: "replies_#create"
   root to: 'products#index'
 end

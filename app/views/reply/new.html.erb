@@ -1,0 +1,22 @@
+<%= form_for [@product, @product.comments.reply.build ] do |f| %>
+    <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(product.errors.count, "error") %> prohibited this listing from being saved:</h2>
+      <ul>
+        <% product.errors.full_messages.each do |message| %>
+        <li>
+          <%= message %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+    <p>
+      <%= f.text_area :reply_body, class: 'form-control' %>
+    </p>
+    <br>
+    <p>
+      <%= f.submit 'Reply', class: 'btn btn-warning' %>
+    </p>
+    <% end %>

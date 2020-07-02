@@ -1,28 +1,27 @@
 <div class="border rounded p-3 mb-4">
   <div class="row">
-    <div class="col-md-3">
-      <% if comment.user.avatar.url.present? %>
-        <%= image_tag(comment.user.avatar.url(:comments)) %>
-      <% else %>
-        <%= image_tag 'https://via.placeholder.com/100' %>
-      <% end %>
+    <div class="col-md-2">
+    <% if comment.user.avatar.url.present? %>
+      <%= image_tag(comment.user.avatar.url(:comments), class: 'rounded-circle img-fluid' ) %>
+    <% end %>
     </div>
-    <div class="col-md-9">
-      <h5 class="text-primary text-uppercase"><%= comment.user.name %> asked:</h5>
+    <div class="col-md-10">
+      <h5 class="text-primary text-uppercase"><span class="text-success"><%= comment.user.name.split(" ").first %></span> asked:</h5>
       <p class="text-secondary"><%= comment.body %></p>
-      <p class="mb-0 text-muted"><%= time_ago_in_words(comment.created_at) %> ago</p>
-      <div class="buttons">
-          <button class="btn btn-info">Edit</button>
-          <button class="btn btn-warning">Reply</button>
-          <%= link_to 'Delete', product_comment_path(comment.product, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+      <div class="d-flex justify-content-between align-items-center">
+        <p class="mb-0 text-muted"><%= time_ago_in_words(comment.created_at) %> ago</p>
+        <div class="buttons">
+          <% if current_user == comment.user %>
+            <%= link_to 'Delete', product_comment_path(comment.product, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <% end %>
         </div>
+      </div> 
     </div>
   </div>
-</div>
 
 <% if comment.reply.present? %>
   <div class="row">
-    <div class="ml-auto d-flex p-3 align-items-center bg-light rounded">
+    <div class="mt-3 mr-3 w-75 ml-auto d-flex p-3 align-items-center bg-light rounded">
       <div class="col-md-2">
         <% if @product.user.avatar.url.present? %>
           <%= image_tag(@product.user.avatar.url(:comments), class: 'rounded-circle img-fluid') %>
@@ -36,11 +35,17 @@
         <div class="d-flex justify-content-between align-items-center">
           <p class="mb-0 text-muted"><%= time_ago_in_words(comment.created_at) %> ago</p>
           <div class="buttons">
-            <%= link_to 'Delete', product_comment_reply_path({ product_id: @product.id, comment_id: comment.id }), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-          </div>
+            <% if current_user == @product.user %>
+              <%= link_to 'Delete', product_comment_reply_path({ product_id: @product.id, comment_id: comment.id }), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            <% end %>
+            </div>
       </div>
     </div>
   </div>
 <% else %>
-  <%= render 'reply/form', product_id: @product.id, comment_id: comment.id %>
+<% if current_user == @product.user %>
+  <%= render 'replies_/form', product_id: @product.id, comment_id: comment.id %>
 <% end %>
+<% end %>
+
+</div>

@@ -4,14 +4,14 @@
   <p class="text-muted">Member since <%= time_ago_in_words(current_user.created_at) %> ago</p>
 </div>
 
-<h2>My Products</h2>
+<h2 class="text-muted"><%= fa_icon "list",class: 'text-muted mr-2' %> My Products</h2>
 <div class="row">
 <% if @products.count == 0 %>
 <div class="col-md-6">
   <p>You have no product to display, create one now!</p>
   </div>
 <% end %>
-  <% @products.each do |product| %>
+<% @products.each do |product| %>
   <div class="col-md-3">
       <div class="card mb-4 shadow-sm">
         <% if product.image.attached? %>
@@ -19,13 +19,14 @@
         <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= product.title %></h5>
-          <p class="card-text"><%= limit_characters_helper(product.description, 100) %></p>
+          <p class="card-text"><%= limit_characters_helper(product.description, 50) %></p>
           <div class="d-flex align-items-center justify-content-between">
-            <%= link_to 'View Product', product, class: "btn btn-success" %>
+            <%= link_to 'View', product, class: "btn btn-success" %>
             <p class="lead m-0"><%= number_to_currency(product.price) %></p>
           </div>
+        </div>
       </div>
-    <% end %>
+  </div>
   <% end %>
 </div>
 
