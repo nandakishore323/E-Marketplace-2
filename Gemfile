@@ -78,7 +78,7 @@ gem "image_processing", "~> 1.7"
 # Stripe
 gem 'stripe'
 
-gem 'carrierwave', '~> 1.2', '>= 1.2.3'
+gem 'carrierwave', '~> 1.3'
 
 # Paginate
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
